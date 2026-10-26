@@ -46,3 +46,43 @@ function classificarVinho(safra) {
     return "Antigo";
   }
 }
+
+function mostrarVinho(numero, nome, safra, quantidade, classificacao, baixo) {
+  let aviso = baixo ? "⚠️ ESTOQUE BAIXO!" : "✅ Estoque ok";
+  let texto =
+    "Vinho nº " + numero + "\n" +
+    "Nome: " + nome + "\n" +
+    "Safra: " + safra + " (" + classificacao + ")\n" +
+    "Quantidade: " + quantidade + "\n" +
+    aviso;
+
+  console.log(texto);
+  alert(texto);
+}
+
+const LIMITE = 5;                 
+let anoAtual = new Date().getFullYear();
+
+let contador = 0;                      
+let totalBaixos = 0;                                             
+let continuar = true;
+
+let nome1 = "", safra1 = 0, quant1 = 0;
+let nome2 = "", safra2 = 0, quant2 = 0;
+let nome3 = "", safra3 = 0, quant3 = 0;
+let nome4 = "", safra4 = 0, quant4 = 0;
+let nome5 = "", safra5 = 0, quant5 = 0;
+
+let nomeAntigo = "";
+let safraAntiga = 0;
+
+while (continuar && contador < LIMITE) {
+  contador++;
+
+  let nome = pedirTexto("Vinho " + contador + " – Nome do vinho:");
+  let safra = pedirNumero("Vinho " + contador + " – Ano da safra (1900 a " + anoAtual + "):", 1900, anoAtual);
+  let quant = pedirNumero("Vinho " + contador + " – Quantidade em estoque:", 0, 100000);
+
+  let classificacao = classificarVinho(safra);
+  let baixo = estoqueBaixo(quant);
+}
