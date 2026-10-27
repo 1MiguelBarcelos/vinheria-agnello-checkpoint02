@@ -1,0 +1,36 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  background: #f5ede6;
+  color: #3b1e24;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: #6b1d2a;
+  color: #fff;
+  text-align: center;
+  padding: 2.5rem 1rem;
+}
+header h1 { font-size: 2.4rem; }
+.subtitulo { margin-top: .5rem; opacity: .85; }
+
+main { flex: 1; display: flex; justify-content: center; padding: 2rem 1rem; }
+.card {
+  background: #fff;
+  max-width: 700px;
+  padding: 2rem;
+  border-radius: 12px;
+  border-left: 6px solid #6b1d2a;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .12);
+  line-height: 1.6;
+}
+.card h2 { margin-bottom: 1rem; color: #6b1d2a; }
+.card p + p { margin-top: .8rem; }
+.dica { font-style: italic; color: #7a5a60; }
+code { background: #f1e4e6; padding: 2px 6px; border-radius: 4px; }
+
+footer { text-align: center; padding: 1rem; background: #3b1e24; color: #ddd; }
