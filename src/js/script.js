@@ -29,14 +29,13 @@ function perguntarSimNao(mensagem) {
   return resposta === "s";
 }
 
-
 function estoqueBaixo(quantidade) {
   return quantidade < 5;
 }
 
 function classificarVinho(safra) {
-  let anoAtual = new Date().getFullYear(); 
-  let idade = anoAtual - safra;            
+  let anoAtual = new Date().getFullYear();
+  let idade = anoAtual - safra;
 
   if (idade <= 5) {
     return "Jovem";
@@ -60,11 +59,11 @@ function mostrarVinho(numero, nome, safra, quantidade, classificacao, baixo) {
   alert(texto);
 }
 
-const LIMITE = 5;                 
+const LIMITE = 5;
 let anoAtual = new Date().getFullYear();
 
-let contador = 0;                      
-let totalBaixos = 0;                                             
+let contador = 0;
+let totalBaixos = 0;
 let continuar = true;
 
 let nome1 = "", safra1 = 0, quant1 = 0;
@@ -85,4 +84,36 @@ while (continuar && contador < LIMITE) {
 
   let classificacao = classificarVinho(safra);
   let baixo = estoqueBaixo(quant);
+
+  if (baixo) {
+    totalBaixos++;
+  }
+
+  switch (contador) {
+    case 1: nome1 = nome; safra1 = safra; quant1 = quant; break;
+    case 2: nome2 = nome; safra2 = safra; quant2 = quant; break;
+    case 3: nome3 = nome; safra3 = safra; quant3 = quant; break;
+    case 4: nome4 = nome; safra4 = safra; quant4 = quant; break;
+    case 5: nome5 = nome; safra5 = safra; quant5 = quant; break;
+  }
+
+  if (contador === 1 || safra < safraAntiga) {
+    nomeAntigo = nome;
+    safraAntiga = safra;
+  }
+
+  mostrarVinho(contador, nome, safra, quant, classificacao, baixo);
+
+  if (contador < LIMITE) {
+    continuar = perguntarSimNao("Cadastrar outro vinho?");
+  }
 }
+
+let resumo =
+  "📋 RESUMO FINAL\n" +
+  "Vinhos cadastrados: " + contador + "\n" +
+  "Vinhos com estoque baixo: " + totalBaixos + "\n" +
+  "Vinho mais antigo: " + nomeAntigo + " (safra " + safraAntiga + ")";
+
+console.log(resumo);
+alert(resumo);
